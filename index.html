@@ -1,1 +1,186 @@
-Hello World
+<!DOCTYPE HTML>
+<!--
+	Big Picture by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>CreationWorks Coaching</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<!-- Header -->
+			<header id="header">
+				<h1>CreationWorks Coaching</h1>
+				<nav>
+					<ul>
+						<li><a href="#intro">Intro</a></li>
+						<li><a href="#one">Who you are</a></li>
+						<li><a href="#two">What I believe</a></li>
+						<li><a href="#work">My Work</a></li>
+						<li><a href="#contact">Contact</a></li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Intro -->
+			<section id="intro" class="main style1 dark fullscreen">
+				<div class="content">
+					<header>
+						<h2>What if success wasn’t the goal?</h2>
+					</header>
+					<p>And that happiness doesn’t come from achieving success, but from within?</p>
+                    <!-- <p>Welcome to <strong>Big Picture</strong> a responsive site template designed by <a href="https://html5up.net">HTML5 UP</a><br />
+					and released for free under the <a href="https://html5up.net/license">Creative Commons Attribution license</a>.</p> -->
+					<footer>
+						<a href="#one" class="button style2 down">More</a>
+					</footer>
+				</div>
+			</section>
+
+		<!-- One -->
+			<section id="one" class="main style2 right dark fullscreen">
+				<div class="content box style2">
+					<header>
+						<h2>You want to change the world</h2>
+					</header>
+                    <p><bold>But you’re continually asking, am I good enough? Do I have something to make a difference? You’ve tried starting or creating things, but nothing happens and you’re stuck with self doubt.</bold></p>
+                    <p>I want to change that.</p>
+				</div>
+				<a href="#two" class="button style2 down anchored">Next</a>
+			</section>
+
+		<!-- Two -->
+			<section id="two" class="main style2 left dark fullscreen">
+				<div class="content box style2">
+					<header>
+						<h2>Hi, I'm Tiffany</h2>
+					</header>
+					<p>I believe that we can all create the change we want to see in the world. Whether it is by leading that team, creating that business, or telling your story, creating change starts from within.
+					</p>
+				</div>
+				<a href="#work" class="button style2 down anchored">Next</a>
+			</section>
+
+		<!-- Work -->
+			<section id="work" class="main style3 primary">
+				<div class="content">
+					<header>
+						<h2>It starts with you</h2>
+					</header>
+
+					<!-- Gallery  -->
+						<div class="gallery">
+								<p><i>“I had a compelling job opportunity that felt impossible to turn down.  After talking with Tiffany she helped me find a third opportunity I hadn’t thought of before that would not only solve all my concerns and let me have all the benefits, but also gave me the courage to make it happen.” - Matthew A.</i></p>
+<!--
+							<article class="from-right">
+								<a href="images/fulls/02.jpg" class="image fit"><img src="images/thumbs/02.jpg" title="Airchitecture II" alt="" /></a>
+							</article>
+							<article class="from-left">
+								<a href="images/fulls/03.jpg" class="image fit"><img src="images/thumbs/03.jpg" title="Air Lounge" alt="" /></a>
+							</article>
+							<article class="from-right">
+								<a href="images/fulls/04.jpg" class="image fit"><img src="images/thumbs/04.jpg" title="Carry on" alt="" /></a>
+							</article>
+							<article class="from-left">
+								<a href="images/fulls/05.jpg" class="image fit"><img src="images/thumbs/05.jpg" title="The sparkling shell" alt="" /></a>
+							</article>
+							<article class="from-right">
+								<a href="images/fulls/06.jpg" class="image fit"><img src="images/thumbs/06.jpg" title="Bent IX" alt="" /></a>
+							</article>
+						-->
+						</div>
+
+				</div>
+			</section>
+
+		<!-- Contact -->
+			<section id="contact" class="main style3 secondary">
+				<div class="content">
+					<header>
+						<h2>Contact</h2>
+						<p>Want to learn more? Let's get connected</p>
+					</header>
+					<div id="sendmessage"><?php echo $message;?></div>
+					<div id="errormessage"></div>
+					<div class="box">
+						<form method="post" action="mail" id="contactForm">
+							<div class="fields">
+								<div class="field half"><input type="text" name="name" placeholder="Name" /></div>
+								<div class="field half"><input type="email" name="email" placeholder="Email" /></div>
+								<div class="field"><textarea name="message" placeholder="Message" rows="6"></textarea></div>
+							</div>
+							<ul class="actions special">
+								<div><button type="submit" name="submit" class="input-btn" id="submitButton">Send Message</button></div>
+								<!-- <li><input type="submit" value="Send Message" id="submitButton"/></li> -->
+							</ul>
+						</form>
+						
+						<script type="text/javascript">
+							$('document').ready(function(){
+								$('#contactForm').on('submit',function(e){
+									e.preventDefault(); //prevent default form submition
+									var FormData = $('#contactForm').serialize();
+									$.ajax({
+										type : 'post',
+										url : 'mail.php',
+										data : FormData,
+										dataTYpe : 'json',
+										encode : true,
+										beforeSend : function(){
+											$('#submitButton').html('<span class="glyphicon glyphicon-repeat fast-right-spinner"></span> Sending');
+										},
+										success : function(response){
+											response = JSON.parse(response);
+											if(response== "ok"){
+												$('#sendmessage').html('Your message has been sent successfully.');
+											}else{
+												$('#errormessage').html(response);
+											}
+											$('#submitButton').html('Send Message');
+										}
+									});
+								});
+							});
+						</script>
+					</div>
+				</div>
+			</section>
+
+		<!-- Footer -->
+			<footer id="footer">
+
+				<!-- Icons -->
+					<ul class="icons">
+						<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
+						<li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+						<li><a href="#" class="icon brands fa-pinterest"><span class="label">Pinterest</span></a></li>
+					</ul>
+
+				<!-- Menu -->
+					<ul class="menu">
+						<li>&copy; Untitled</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li>
+					</ul>
+
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.poptrox.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
